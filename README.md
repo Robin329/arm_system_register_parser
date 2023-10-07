@@ -1,4 +1,7 @@
 # arm_system_register_parser
+
+## Introduce
+
 A python parser for decoding arm aarch32 and aarch64 system registers
 
 This project is to help engineers, who are working on armv7-ar, armv8-a, armv8-r and armv9-a platforms, to decode the value (in Hex format) in all aarch32 and aarch64 system registers, so that they can debug a problem or find information easier.
@@ -13,7 +16,24 @@ Enter the register value(hex format): 0x0000000096000005
 
 For register name, it should be lowercase. You do not need to specify whether it is aarch32 and aarch64 register, by default, system register name without '_elx' are treated as aarch32 registers,  and system register name with '_elx' are treated as aarch64 registers.
 
-Here is an examples:
+## Install
+
+1. Download the xml file from https://developer.arm.com/downloads/-/exploration-tools to local
+```sh
+$ python3 download_xml.py
+```
+2. check `dl/` & `sys_reg_xml/` directory
+
+
+## Run
+
+```sh
+$ python3 sys_reg_parser.py
+Enter the register name: Please input register name
+Enter the register value(hex format): Please input hex value
+```
+
+Here is an aarch32 examples:
 
 ```
 Enter the register name: esr
@@ -149,7 +169,7 @@ When (DFSC == 0b00xxxx || DFSC == 0b101011) && DFSC != 0b0000xx
 -------------------------------------------------------------
 bit[ 12 : 11 ] is 0b0
 Field Name: SET
-Field Description: Synchronous Error Type. Used when a Syncronous External abort, not on a Translation table walk or hardware update of the Translation table, generated the Data Abort. 
+Field Description: Synchronous Error Type. Used when a Syncronous External abort, not on a Translation table walk or hardware update of the Translation table, generated the Data Abort.
 Describes the PE error state after taking the Data Abort exception.
 
 When FEAT_RAS is implemented and (DFSC == 0b010000, or DFSC == 0b01001x or DFSC == 0b0101xx)
@@ -189,7 +209,7 @@ Field Description: For a stage 2 fault, indicates whether the fault was a stage 
 -------------------------------------------------------------
 bit[ 6 : 6 ] is 0b0
 Field Name: WnR
-Field Description: Write not Read. Indicates whether a synchronous abort was caused by an instruction writing to a memory location, or by an instruction reading from a memory location. 
+Field Description: Write not Read. Indicates whether a synchronous abort was caused by an instruction writing to a memory location, or by an instruction reading from a memory location.
 
 0b0:Abort caused by an instruction reading from a memory location.
 

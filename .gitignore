@@ -1,0 +1,4 @@
+/dl/
+/sys_reg_xml/*
+.vscode/
+__pycache__/
